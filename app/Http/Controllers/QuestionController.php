@@ -11,6 +11,12 @@ class QuestionController extends Controller
     public function index()
     {
         $questions = Question::all();
+        return new QuestionResourceCollection($questions->random(20));
+    }
+
+    public function all()
+    {
+        $questions = Question::all();
         return new QuestionResourceCollection($questions);
     }
 }

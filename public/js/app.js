@@ -1924,6 +1924,52 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1931,7 +1977,7 @@ __webpack_require__.r(__webpack_exports__);
       quiz: [],
       questionIndex: 0,
       isDataLoaded: false,
-      userResponses: Array(quiz.questions.length).fill(false)
+      userResponses: []
     };
   },
   methods: {
@@ -1943,7 +1989,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     score: function score() {
       return this.userResponses.filter(function (val) {
-        return val;
+        return val > 0;
       }).length;
     }
   },
@@ -1953,7 +1999,7 @@ __webpack_require__.r(__webpack_exports__);
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('http://localhost:8000/api/questions').then(function (response) {
       _this.quiz = response.data.data;
       _this.isDataLoaded = true;
-      console.log(_this.quiz);
+      _this.userResponses = Array(_this.quiz.length).fill(0);
     });
   },
   computed: {
@@ -37336,26 +37382,192 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [_vm._v("Simulador de redes")]),
-    _vm._v("\n  Lorem ipsum\n\n  "),
-    _vm.isDataLoaded
-      ? _c(
-          "div",
-          _vm._l(_vm.quiz, function(question) {
-            return _c("div", { key: question.id }, [
-              _vm._v(
-                "\n          " +
-                  _vm._s(question.question) +
-                  "\n        test\n    "
-              )
-            ])
-          }),
-          0
-        )
-      : _vm._e()
+    _c("div", { staticClass: "preview" }, [
+      _c("div", { staticClass: "questionsBox" }, [
+        _c("div", { staticClass: "questions" }, [_vm._v("Simulador de redes")]),
+        _vm._v(" "),
+        _vm.isDataLoaded
+          ? _c(
+              "div",
+              [
+                _vm._l(_vm.quiz, function(question, index) {
+                  return _c("div", [
+                    _c(
+                      "div",
+                      {
+                        directives: [
+                          {
+                            name: "show",
+                            rawName: "v-show",
+                            value: index === _vm.questionIndex,
+                            expression: "index === questionIndex"
+                          }
+                        ]
+                      },
+                      [
+                        _c("h2", [_vm._v(_vm._s(question.question))]),
+                        _vm._v(" "),
+                        _c(
+                          "ol",
+                          _vm._l(question.answers, function(response) {
+                            return _c("li", [
+                              _c("label", [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.userResponses[index],
+                                      expression: "userResponses[index]"
+                                    }
+                                  ],
+                                  attrs: { type: "radio", name: index },
+                                  domProps: {
+                                    value: response.correct,
+                                    checked: _vm._q(
+                                      _vm.userResponses[index],
+                                      response.correct
+                                    )
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      return _vm.$set(
+                                        _vm.userResponses,
+                                        index,
+                                        response.correct
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(
+                                  " " +
+                                    _vm._s(response.answer) +
+                                    "\n                            "
+                                )
+                              ])
+                            ])
+                          }),
+                          0
+                        ),
+                        _vm._v(" "),
+                        _vm.questionIndex > 0
+                          ? _c(
+                              "button",
+                              { staticClass: "btn", on: { click: _vm.prev } },
+                              [
+                                _vm._v(
+                                  "\n                        Anterior\n                    "
+                                )
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          { staticClass: "btn", on: { click: _vm.next } },
+                          [
+                            _vm._v(
+                              "\n                        Siguiente\n                    "
+                            )
+                          ]
+                        )
+                      ]
+                    )
+                  ])
+                }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.questionIndex === _vm.quiz.length,
+                        expression: "questionIndex === quiz.length"
+                      }
+                    ]
+                  },
+                  [
+                    _c("h2", [
+                      _vm._v(
+                        "\n                    Prueba Finalizada\n                "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("table", { staticClass: "table table-striped" }, [
+                      _vm._m(0),
+                      _vm._v(" "),
+                      _c(
+                        "tbody",
+                        _vm._l(_vm.quiz, function(ans, ind) {
+                          return _c("tr", [
+                            _c("td", [_vm._v(_vm._s(ind + 1))]),
+                            _vm._v(" "),
+                            _c("td", [_vm._v(_vm._s(ans.question))]),
+                            _vm._v(" "),
+                            _c("td", [
+                              _vm.userResponses[ind] === 1
+                                ? _c(
+                                    "span",
+                                    { staticClass: "badge badge-success" },
+                                    [_vm._v("Correcta")]
+                                  )
+                                : _c(
+                                    "span",
+                                    { staticClass: "badge badge-danger" },
+                                    [_vm._v("Incorrecta")]
+                                  )
+                            ]),
+                            _vm._v(" "),
+                            _c("td")
+                          ])
+                        }),
+                        0
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _vm._v(
+                        "\n                    Nota final: " +
+                          _vm._s(_vm.score()) +
+                          " / " +
+                          _vm._s(_vm.quiz.length) +
+                          "\n                "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("a", { attrs: { href: "index.php" } }, [
+                      _vm._v("Volver a empezar")
+                    ])
+                  ]
+                )
+              ],
+              2
+            )
+          : _vm._e()
+      ])
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Pregunta")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Respuesta")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Respuesta Correcta")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
