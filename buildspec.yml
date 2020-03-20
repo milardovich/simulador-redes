@@ -23,6 +23,10 @@ phases:
     - php artisan key:generate
     - echo seeding DB
     - php artisan migrate:fresh --seed
+    - echo running NPM
+    - npm run dev
+    - echo running tests
+    - vendor/bin/phpunit
     - echo Building the Docker image...
     - docker build -t $REPOSITORY_URI:latest .
     - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
