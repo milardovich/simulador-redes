@@ -25,6 +25,7 @@ phases:
     - echo seeding DB
     - php artisan migrate:fresh --seed
     - echo running NPM
+    - npm install
     - npm run dev
     - echo running tests
     - vendor/bin/phpunit
