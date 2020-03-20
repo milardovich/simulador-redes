@@ -8,7 +8,6 @@
             <div v-for="(question, index) in quiz">
 
                 <div v-show="index === questionIndex">
-                
                     <h2>{{ question.question }}</h2>
                     <ol>
                         <li v-for="response in question.answers">
@@ -42,8 +41,8 @@
                     <tr v-for="(ans, ind) in quiz">
                         <td>{{ ind+1 }}</td>
                         <td>{{ ans.question }}</td>
-                        <td><span v-if="userResponses[ind] === 1" class="badge badge-success">Correcta</span><span v-else class="badge badge-danger">Incorrecta</span> </td>
-                        <td> </td>
+                        <td><span v-if="userResponses[ind] == '1'" class="badge badge-success">Correcta</span><span v-else class="badge badge-danger">Incorrecta</span> </td>
+                        <td>{{ showCorrectAnswer(ind) }}</td>
                     </tr>
                 </tbody>
                 </table>
@@ -66,7 +65,8 @@ export default {
             quiz: [],
             questionIndex: 0,
             isDataLoaded: false,
-            userResponses: []
+            userResponses: [],
+            correctAnswer: ''
         }
     },
     methods: {
@@ -81,6 +81,13 @@ export default {
             return this.userResponses.filter(function (val) {
                 return val > 0
             }).length;
+        },
+        showCorrectAnswer(ind) {
+            if(this.isDataLoaded && this.quiz[ind].answers.length > 0) {
+                return this.quiz[ind].answers.filter(function (val) {
+                     return val.correct > 0;
+                })[0].answer;
+            }
         }
     },
     mounted() {

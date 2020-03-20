@@ -1969,7 +1969,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1977,7 +1976,8 @@ __webpack_require__.r(__webpack_exports__);
       quiz: [],
       questionIndex: 0,
       isDataLoaded: false,
-      userResponses: []
+      userResponses: [],
+      correctAnswer: ''
     };
   },
   methods: {
@@ -1991,6 +1991,14 @@ __webpack_require__.r(__webpack_exports__);
       return this.userResponses.filter(function (val) {
         return val > 0;
       }).length;
+    },
+    showCorrectAnswer: function showCorrectAnswer(ind) {
+      if (this.isDataLoaded && this.quiz[ind].answers.length > 0) {
+        console.log(ind);
+        return this.quiz[ind].answers.filter(function (val) {
+          return val.correct > 0;
+        })[0].answer;
+      }
     }
   },
   mounted: function mounted() {
@@ -37507,7 +37515,7 @@ var render = function() {
                             _c("td", [_vm._v(_vm._s(ans.question))]),
                             _vm._v(" "),
                             _c("td", [
-                              _vm.userResponses[ind] === 1
+                              _vm.userResponses[ind] == "1"
                                 ? _c(
                                     "span",
                                     { staticClass: "badge badge-success" },
@@ -37520,7 +37528,9 @@ var render = function() {
                                   )
                             ]),
                             _vm._v(" "),
-                            _c("td")
+                            _c("td", [
+                              _vm._v(_vm._s(_vm.showCorrectAnswer(ind)))
+                            ])
                           ])
                         }),
                         0

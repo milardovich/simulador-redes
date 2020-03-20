@@ -1570,7 +1570,7 @@ class AnswersTableSeeder extends Seeder
             ],
             [
                 'answer' => 'RIP',
-                'correct' => false,
+                'correct' => true,
                 'question_id' => 73,
             ],
             [
