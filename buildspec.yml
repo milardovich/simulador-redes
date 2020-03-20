@@ -21,6 +21,8 @@ phases:
     - cp .env.example .env
     - echo generating app key
     - php artisan key:generate
+    - echo seeding DB
+    - php artisan migrate:fresh --seed
     - echo Building the Docker image...
     - docker build -t $REPOSITORY_URI:latest .
     - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
