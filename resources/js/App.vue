@@ -92,7 +92,7 @@ export default {
     },
     mounted() {
 
-        axios.get('http://localhost:8000/api/questions').then((response) => {
+        axios.get('http://redes.milardovich.com.ar/api/questions').then((response) => {
             this.quiz = response.data.data;
             this.isDataLoaded = true;
             this.userResponses = Array(this.quiz.length).fill(0);
