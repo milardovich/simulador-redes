@@ -7,8 +7,6 @@ class AnswersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
     public function run()
     {
@@ -1610,7 +1608,7 @@ class AnswersTableSeeder extends Seeder
             ],
             [
                 'answer' => 'b. Un protocolo de enrutamiento dinámico',
-                'correct' => false,
+                'correct' => true,
                 'question_id' => 75,
             ],
             [
@@ -1952,13 +1950,13 @@ class AnswersTableSeeder extends Seeder
                 'answer' => 'Ninguna es correcta',
                 'correct' => false,
                 'question_id' => 89,
-            ]
+            ],
         ];
         foreach ($answers as $answer) {
             Answer::create([
                 'answer' => $answer['answer'],
                 'correct' => $answer['correct'],
-                'question_id' => $answer['question_id']
+                'question_id' => $answer['question_id'],
             ]);
         }
     }
