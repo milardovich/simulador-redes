@@ -1710,7 +1710,7 @@ class AnswersTableSeeder extends Seeder
             ],
             [
                 'answer' => 'c. Para canalizar los paquetes cuyos destinos no son conocidos por el router',
-                'correct' => false,
+                'correct' => true,
                 'question_id' => 79,
             ],
             [
