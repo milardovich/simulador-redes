@@ -1758,7 +1758,7 @@ class AnswersTableSeeder extends Seeder
             ],
             [
                 'answer' => 'd. Controlar los errores (CRC) en las tramas',
-                'correct' => false,
+                'correct' => true,
                 'question_id' => 80,
             ],
             [
