@@ -1238,7 +1238,7 @@ class AnswersTableSeeder extends Seeder
             ],
             [
                 'answer' => 'Un puerto',
-                'correct' => false,
+                'correct' => true,
                 'question_id' => 57,
             ],
             [
