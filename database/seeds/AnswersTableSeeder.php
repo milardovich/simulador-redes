@@ -1297,6 +1297,26 @@ class AnswersTableSeeder extends Seeder
                 'question_id' => 60,
             ],
             [
+                'answer' => 'Utiliza punto a punto.',
+                'correct' => false,
+                'question_id' => 60,
+            ],
+            [
+                'answer' => 'Opera a 100-1000 Mbps.',
+                'correct' => false,
+                'question_id' => 60,
+            ],
+            [
+                'answer' => 'Opera a velocidades menores a 100 Mbps.',
+                'correct' => false,
+                'question_id' => 60,
+            ],
+            [
+                'answer' => 'Todas las anteriores son correctas.',
+                'correct' => true,
+                'question_id' => 60,
+            ],            
+            [
                 'answer' => 'Utiliza difusión.',
                 'correct' => false,
                 'question_id' => 61,
